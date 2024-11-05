@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'sans-serif';
+}
+
+body,
+html {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container  {
+    display: flex;
+    align-items: center;
+    height: max-content;
+    width: 500px;
+    transition: height 0.2s ease;
+}
+
+.container .form  {
+    position: relative;
+    width: 120%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 20px;
+    padding: 30px;
+    background-color: #fff;
+}
+
+.title {
+    position: relative;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background-color: #00abf0;
+    border-radius: 25px;
+}
+
+.input-field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.input-field input, .input-field textarea {
+    position: absolute;
+    height: 100%;
+    width: 110%;
+    padding: 0 35px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    border-top: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid), .input-field textarea:is(:focus, :valid) {
+    border-bottom-color: #00abf0;
+}
+
+.input-field i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 23px;
+    transition: all 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid)~i, .input-field textarea:is(:focus, :valid)~i {
+    color: #00abf0;
+}
+
+a.text {
+    color: #00abf0;
+    text-decoration: none;
+}
+
+button {
+    margin-left: 30%;
+    height: 70%;
+    width: 50%;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    background-color: #00abf0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-signup {
+    margin-left: 10%;
+}
+
+
+.myblog {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.myblog:hover {
+    transform: scale(1.1);
+}
