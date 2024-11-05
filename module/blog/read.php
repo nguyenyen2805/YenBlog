@@ -3,7 +3,7 @@
 
         <?php if (isset($_GET['blog_id'])): ?>
             <?php
-            $blog_id = $_GET['blog_id'];
+            $blog_id = intval($_GET['blog_id']);
             $query = "SELECT * FROM blogs WHERE blog_id=$blog_id";
             $result = $conn->query($query);
 
