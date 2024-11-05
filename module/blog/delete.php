@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_GET['blog_id'])) {
-    $blog_id = $_GET['blog_id'];
+    $blog_id = intval($_GET['blog_id']);
 
     // echo $blog_id;
 
