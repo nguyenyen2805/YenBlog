@@ -4,8 +4,8 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-        $title = $_POST['title'];
-        $content = $_POST['content'];
+        $title = addslashes($_POST['title']);
+        $content = addslashes($_POST['content']);
         $image = $_FILES['image'];
     
         $targer_dir = 'uploads/blog/';
