@@ -17,7 +17,7 @@ if (isset($_GET['blog_id'])) {
         if ($_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
             $image = $_FILES['image'];
             $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
-            $target_dir = 'uploads/blog/';
+            $target_dir = 'uploads/blogs/';
             $new_avatar_path = $target_dir . uniqid() . '.' . $extension;
         }
 
