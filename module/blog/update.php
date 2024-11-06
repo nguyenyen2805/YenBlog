@@ -11,8 +11,8 @@ if (isset($_GET['blog_id'])) {
     $new_avatar_path = $result['avatar_path'];
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $new_title = $_POST['title'];
-        $new_content = $_POST['content'];
+        $new_title = addslashes($_POST['title']);
+        $new_content = addslashes($_POST['content']);
 
         if ($_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
             $image = $_FILES['image'];
