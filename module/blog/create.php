@@ -8,7 +8,7 @@
         $content = addslashes($_POST['content']);
         $image = $_FILES['image'];
     
-        $targer_dir = 'uploads/blog/';
+        $targer_dir = 'uploads/blogs/';
         $image_extension = pathinfo($image['name'], PATHINFO_EXTENSION);
         $image_name = uniqid() . ".$image_extension";
         $avatar_path = $targer_dir . $image_name;

@@ -1,6 +1,6 @@
 <?php
 
-$blog_id = isset($_GET['blog_id']) ? $_GET['blog_id'] : null;
+$blog_id = isset($_GET['blog_id']) ? intval($_GET['blog_id']) : null;
 $query = "SELECT u.avatar_path, u.username, cmt.content, cmt.created_at, cmt.comment_id FROM `comments` AS cmt INNER JOIN `users` AS u ON cmt.user_id = u.user_id WHERE blog_id = $blog_id ORDER BY cmt.created_at DESC;";
 $result = $conn->query($query);
 

@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_FILES['avatar']['error'] !== UPLOAD_ERR_NO_FILE) {
         $avatar = $_FILES['avatar'];
         $extension = pathinfo($avatar['name'], PATHINFO_EXTENSION);
-        $target_dir = 'uploads/avatar/';
+        $target_dir = 'uploads/avatars/';
         $new_avatar_path = $target_dir . uniqid() . '.' . $extension;
         
     }
