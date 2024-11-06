@@ -1,8 +1,8 @@
 <?php
 
 if (isset($_GET['comment_id'])) {
-    $comment_id = $_GET['comment_id'];
-    $blog_id = $_GET['blog_id'];
+    $comment_id = intval($_GET['comment_id']);
+    $blog_id = intval($_GET['blog_id']);
     $query = "SELECT * FROM comments WHERE comment_id = $comment_id";
     $result = $conn->query($query);
     $comment = $result->fetch_assoc()['content'];
@@ -10,7 +10,7 @@ if (isset($_GET['comment_id'])) {
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $new_comment = $_POST['comment-text'];
+        $new_comment = addslashes($_POST['comment-text']);
         $query = "UPDATE `comments` SET `content`= '$new_comment' WHERE comment_id = $comment_id";
         $result = $conn->query($query);
 
