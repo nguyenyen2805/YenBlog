@@ -106,11 +106,11 @@
 
     <div class="dropdown">
         <i class="fa fa-user-circle user-icon"></i>
-        <em> <?= isset($_COOKIE['username']) ? $_COOKIE['username'] : null ?>
+        <em> <?= isset($_SESSION['username']) ? $_SESSION['username'] : null ?>
             <div class="dropdown-content">
                 <a href="?page=module/user&action=profile">My profile</a>
 
-                <?php if (isset($_COOKIE['username'])): ?>
+                <?php if (isset($_SESSION['username'])): ?>
                     <a href="?page=module/user&action=signout" class="btn">Sign out</a>
                 <?php else : ?>
                     <a href="?page=module/user&action=signin" class="btn">Sign in</a>

@@ -8,19 +8,9 @@ function remove_bad_charactors($string)
 
 function checkAuthentication()
 {
-    $username = $_COOKIE['username'];
-    $secret = 'y3nn9uy3n';
-    $user_agent = getUserAgent();
-    $ip_address = getIpAddress();
-    $client_stamp = $_COOKIE['stamp'];
+    $username = $_SESSION['username'];
 
-    if (isset($username) && !empty($username) && isset($client_stamp) && !empty($client_stamp)) {
-        $server_stamp = generateStamp($username, $secret, $user_agent, $ip_address);
-        if (!validateStamp($client_stamp, $server_stamp)) {
-            header("Location: ?page=module/user&action=signin");
-            die();
-        }
-    } else {
+    if (!isset($username)) {
         header("Location: ?page=module/user&action=signin");
         die();
     }
@@ -56,16 +46,16 @@ function getIpAddress()
     return 'UNKNOWN';
 }
 
-function checkOwner() {
-    
+function checkOwner($commentUsername) {
+    return isset($_SESSION['username']) && $_SESSION['username'] === $commentUsername;
 }
 
-function getUserId() {
+function getUserId()
+{
     global $conn;
-    $username = $_COOKIE['username'];
+    $username = $_SESSION['username'];
     $query = "SELECT * FROM users WHERE username = '$username'";
     $result = $conn->query($query);
     $user_id = $result->fetch_assoc()['user_id'];
     return $user_id;
-
 }

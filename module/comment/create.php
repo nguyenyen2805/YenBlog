@@ -9,20 +9,15 @@ if (isset($_GET['blog_id'])) {
         checkAuthentication();
         $content = addslashes($_POST['comment-text']);
 
-        if (isset($_COOKIE['username'])) {
+        $user_id = getUserId();
 
-            $user_id = getUserId();
+        $sql = "INSERT INTO `comments`(`content`, `user_id`, `blog_id`, `parent_id`) VALUES ('$content','$user_id','$blog_id',0)";
+        $result = $conn->query($sql);
 
-            $sql = "INSERT INTO `comments`(`content`, `user_id`, `blog_id`, `parent_id`) VALUES ('$content','$user_id','$blog_id',0)";
-            $result = $conn->query($sql);
-
-            if ($result == true) {
-                header("Location: ?page=module/blog&action=read&blog_id=$blog_id");
-            } else {
-                echo "Fault";
-            }
+        if ($result == true) {
+            header("Location: ?page=module/blog&action=read&blog_id=$blog_id");
         } else {
-            header("Location: ?page=module/user&action=signin");
+            echo "Fault";
         }
     }
 }
@@ -33,13 +28,13 @@ if (isset($_GET['blog_id'])) {
 
 
 <h3>Post your comment</h3>
-    <form method="POST">
-        <div class="input-field">
-            <textarea name="comment-text" id="" placeholder="Enter your comment" required></textarea>
-            <i class="fa-solid fa-comment"></i>
-        </div>
-        
-        <div class="input-field button">
-            <button>Submit</button>
-        </div>
-    </form>
+<form method="POST">
+    <div class="input-field">
+        <textarea name="comment-text" id="" placeholder="Enter your comment" required></textarea>
+        <i class="fa-solid fa-comment"></i>
+    </div>
+
+    <div class="input-field button">
+        <button>Submit</button>
+    </div>
+</form>
