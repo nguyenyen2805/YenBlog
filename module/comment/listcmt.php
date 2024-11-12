@@ -17,7 +17,7 @@ $result = $conn->query($query);
 
             <em>Post on: <?=$row['created_at']?></em>
             <div class="btn-box">
-                <?php if (isset($_COOKIE['username']) && $row['username'] === $_COOKIE['username']): ?>
+                <?php if (checkOwner($row['username'])): ?>
                     <a href='?page=module/comment&action=update&comment_id=<?= $row['comment_id']?>&blog_id=<?= $blog_id?>' class='btn'>Update</a>
                     <a href='?page=module/comment&action=delete&comment_id=<?= $row['comment_id']?>&blog_id=<?= $blog_id?>' class='btn' onclick="return confirm('Are you sure you want to delete this comment?');">Delete</a>
 

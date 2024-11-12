@@ -2,7 +2,7 @@
 
 checkAuthentication();
 
-$username = $_COOKIE['username'];
+$username = $_SESSION['username'];
 $query = "SELECT * FROM users WHERE username = '$username'";
 $result = $conn->query($query);
 $row = $result->fetch_assoc();

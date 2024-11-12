@@ -7,12 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
     $result = $conn->query($query);
 
-    $secret = 'y3nn9uy3n';
-    $client_stamp = generateStamp($username, $secret, $_SERVER['HTTP_USER_AGENT'], $_SERVER['REMOTE_ADDR']);
-
     if ($result->num_rows > 0) {
-        setcookie('username', $username, time() + 3600, '/', '', true, true);
-        setcookie('stamp', $client_stamp, time() + 3600, '/', '', true, true);
+        $_SESSION['username'] = $username;
         header("Location: ?page=module/user&action=profile");
     }
     else {
