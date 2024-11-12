@@ -8,9 +8,9 @@ $result = $conn->query($query);
 $row = $result->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $new_email = $_POST['email'];
-    $new_phone_number = $_POST['phone_number'];
-    $new_address = $_POST['address'];
+    $new_email = addslashes($_POST['email']);
+    $new_phone_number = addslashes($_POST['phone_number']);
+    $new_address = addslashes($_POST['address']);
     $new_avatar_path = $row['avatar_path'];
 
     if ($_FILES['avatar']['error'] !== UPLOAD_ERR_NO_FILE) {
