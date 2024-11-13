@@ -10,7 +10,7 @@ if (isset($_GET['comment_id'])) {
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $new_comment = addslashes($_POST['comment-text']);
+        $new_comment = htmlspecialchars($_POST['comment-text']);
         $query = "UPDATE `comments` SET `content`= '$new_comment' WHERE comment_id = $comment_id";
         $result = $conn->query($query);
 

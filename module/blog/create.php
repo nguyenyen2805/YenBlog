@@ -1,11 +1,13 @@
-<?php 
+<?php
+
+use function PHPSTORM_META\type;
 
     checkAuthentication();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-        $title = addslashes($_POST['title']);
-        $content = addslashes($_POST['content']);
+        $title = htmlspecialchars($_POST['title']);
+        $content = htmlspecialchars($_POST['content']);
         $image = $_FILES['image'];
     
         $targer_dir = 'uploads/blogs/';
@@ -19,7 +21,6 @@
             $result = $conn->query($query);
     
             $blog_id = $conn->insert_id;
-            // echo $blog_id;
             if ($result === true) {
                 echo "Create successful.";
                 header("Location: ?page=module/blog&action=read&blog_id=$blog_id");
