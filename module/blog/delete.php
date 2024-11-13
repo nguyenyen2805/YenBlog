@@ -11,7 +11,7 @@ if (isset($_GET['blog_id'])) {
     // echo $result;
 
     if ($result === true) {
-        header("Location: index.php");
+        header("Location: ?page=module/user&action=ublog");
     } else {
         echo "fail";
     }

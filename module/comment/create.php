@@ -7,7 +7,7 @@ if (isset($_GET['blog_id'])) {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         checkAuthentication();
-        $content = addslashes($_POST['comment-text']);
+        $content = htmlspecialchars($_POST['comment-text']);
 
         if (isset($_COOKIE['username'])) {
 
